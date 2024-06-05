@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Unidade } from '../models/unidade.model';
 
 @Injectable({
@@ -12,9 +13,17 @@ export class UnidadeService {
 
   constructor(private http: HttpClient) { }
 
-  getUnidades(): Observable<Unidade[]> {
-    return this.http.get<{ rows: Unidade[] }>(this.apiUrl).pipe(
-      map(response => response.rows)
+  getUnidades(regiao?: string): Observable<Unidade[]> {
+    let url = this.apiUrl;
+    if (regiao) {
+      url = `${this.apiUrl}/regiao/${regiao}`;
+    }
+
+    return this.http.get<Unidade[]>(url).pipe(
+      map(response => {
+        console.log('Dados da API:', response);
+        return response;
+      })
     );
   }
 }
