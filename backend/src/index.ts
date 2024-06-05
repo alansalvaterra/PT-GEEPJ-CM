@@ -1,6 +1,8 @@
 import express from 'express';
 import unidadeRoutes from './unidadeRoutes';
 import regiaoRoutes from './regiaoRoutes';
+import municipioRoutes from './municipioRoutes';
+import srRoutes from './srRoutes';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +17,8 @@ app.use((req, res, next) => {
 
 app.use('/api/unidade', unidadeRoutes);
 app.use('/api/regiao', regiaoRoutes);
+app.use('/api/municipio', municipioRoutes);
+app.use('/api/sr', srRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
