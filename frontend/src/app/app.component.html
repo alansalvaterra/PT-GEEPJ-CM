@@ -1,21 +1,56 @@
 <app-header></app-header>
 
-<main class="container mx-auto bg-white rounded-xl shadow-lg my-6">
+<main class="container mx-auto bg-white rounded-xl shadow-lg my-6 p-6 flex flex-wrap items-start">
 
-  <div class="px-4 py-2">
-    <h2 class="text-lg font-semibold mb-2">Localizador de Unidades</h2>
-    <p class="text-sm text-gray-600">Encontre abaixo a localização das unidades da Caixa Econômica Federal:</p>
+  <div class="w-full">
+    <div class="pb-5 text-center">
+      <h2 class="text-3xl font-semibold mb-2">Localizador de Unidades</h2>
+      <p class="text-2xl">Encontre abaixo a localização das unidades da Caixa Econômica Federal</p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row">
+      <div class="w-full lg:w-1/4 pr-6">
+
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">Todas as unidades</h3>
+          <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow">Todas as
+            unidades</button>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">Região</h3>
+          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+            <option value="">Selecione a região</option>
+            <option *ngFor="let regiao of regioes" [value]="regiao.regiao">{{ regiao.regiao }}</option>
+          </select>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">Estado</h3>
+          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+            <option value="">Selecione a UF</option>
+          </select>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">Município</h3>
+          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+            <option value="">Selecione o município</option>
+          </select>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">SR</h3>
+          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+            <option value="">Selecione a SR</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="w-full lg:w-3/4">
+        <app-map [filterRegiao]="selectedRegiao"></app-map>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <select (change)="onRegiaoChange($event)">
-      <!-- <option value="">Todas as Regiões</option> -->
-      <option *ngFor="let regiao of regioes" [value]="regiao.regiao">{{ regiao.regiao }}</option>
-    </select>
-  </div>
-  <app-map [filterRegiao]="selectedRegiao"></app-map>
-
-  
 </main>
-
 <app-footer></app-footer>
