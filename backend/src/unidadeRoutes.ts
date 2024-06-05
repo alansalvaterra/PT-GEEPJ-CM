@@ -5,10 +5,10 @@ const router = express.Router();
 
 //Todas as unidades
 router.get('/', (req: Request, res: Response) => {
-    fs.readFile('api.json', 'utf8', (err, data) => {
+    fs.readFile('./data-source/unidades.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Erro ao ler o arquivo API.' });
+            res.status(500).json({ error: 'Erro ao ler o arquivo.' });
             return;
         }
         res.json(JSON.parse(data));
@@ -18,10 +18,10 @@ router.get('/', (req: Request, res: Response) => {
 //Unidade por código
 router.get('/:codigo_unidade', (req: Request, res: Response) => {
     const codigo_unidade = req.params.codigo_unidade;
-    fs.readFile('api.json', 'utf8', (err, data) => {
+    fs.readFile('./data-source/unidades.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Erro ao ler o arquivo API.' });
+            res.status(500).json({ error: 'Erro ao ler o arquivo.' });
             return;
         }
         const apiData = JSON.parse(data);
@@ -37,10 +37,10 @@ router.get('/:codigo_unidade', (req: Request, res: Response) => {
 //Unidades por código IBGE do município
 router.get('/ibge/:codigo_ibge_municipio', (req: Request, res: Response) => {
     const codigo_ibge_municipio = req.params.codigo_ibge_municipio;
-    fs.readFile('api.json', 'utf8', (err, data) => {
+    fs.readFile('./data-source/unidades.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Erro ao ler o arquivo API.' });
+            res.status(500).json({ error: 'Erro ao ler o arquivo.' });
             return;
         }
         const apiData = JSON.parse(data);
@@ -56,10 +56,10 @@ router.get('/ibge/:codigo_ibge_municipio', (req: Request, res: Response) => {
 //Unidades por por região
 router.get('/regiao/:regiao', (req: Request, res: Response) => {
     const regiao = req.params.regiao;
-    fs.readFile('api.json', 'utf8', (err, data) => {
+    fs.readFile('./data-source/unidades.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Erro ao ler o arquivo API.' });
+            res.status(500).json({ error: 'Erro ao ler o arquivo.' });
             return;
         }
         const apiData = JSON.parse(data);
@@ -75,10 +75,10 @@ router.get('/regiao/:regiao', (req: Request, res: Response) => {
 //Unidades por UF
 router.get('/uf/:uf', (req: Request, res: Response) => {
     const uf = req.params.uf;
-    fs.readFile('api.json', 'utf8', (err, data) => {
+    fs.readFile('./data-source/unidades.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Erro ao ler o arquivo API.' });
+            res.status(500).json({ error: 'Erro ao ler o arquivo.' });
             return;
         }
         const apiData = JSON.parse(data);
@@ -94,10 +94,10 @@ router.get('/uf/:uf', (req: Request, res: Response) => {
 //Unidades por SR
 router.get('/sr/:sr', (req: Request, res: Response) => {
     const sr = req.params.sr;
-    fs.readFile('api.json', 'utf8', (err, data) => {
+    fs.readFile('./data-source/unidades.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Erro ao ler o arquivo API.' });
+            res.status(500).json({ error: 'Erro ao ler o arquivo.' });
             return;
         }
         const apiData = JSON.parse(data);

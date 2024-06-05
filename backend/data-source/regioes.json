@@ -1,0 +1,10 @@
+{
+  "count": 5,
+  "rows": [
+    { "regiao": "Centro-Oeste" },
+    { "regiao": "Nordeste" },
+    { "regiao": "Norte" },
+    { "regiao": "Sudeste" },
+    { "regiao": "Sul" }
+  ]
+}
