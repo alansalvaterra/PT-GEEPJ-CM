@@ -10,11 +10,9 @@
 
     <div class="flex flex-col lg:flex-row">
       <div class="w-full lg:w-1/4 pr-6">
-
         <div class="mb-6">
           <h3 class="text-lg font-semibold mb-2">Todas as unidades</h3>
-          <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow">Todas as
-            unidades</button>
+          <button (click)="loadAllUnidades()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow">Todas as unidades</button>
         </div>
 
         <div class="mb-6">
@@ -53,4 +51,5 @@
     </div>
   </div>
 </main>
+
 <app-footer></app-footer>

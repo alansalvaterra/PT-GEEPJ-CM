@@ -30,6 +30,11 @@ export class AppComponent implements OnInit {
   onRegiaoChange(event: any): void {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedRegiao = selectElement.value;
-    console.log('Nova região selecionada:', this.selectedRegiao);
+    console.log('Nova região selecionada:', this.selectedRegiao); // Adicione este log
+  }
+  
+
+  loadAllUnidades(): void {
+    this.selectedRegiao = '';
   }
 }
