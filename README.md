@@ -1,36 +1,36 @@
+# Produção Temática - GEEPJ - Consultor Matriz
+## Decrição
+O projeto é uma SPA com Angular, TypeScript, PrimeNG e Leaflet que deverá consumir uma API, que contém dados de unidades de atendimento CAIXA, e mostrar as unidades em um mapa interativo.Para mais informações, a especificação completa pode ser acessada através do link abaixo:
 
-4 Refatorar filtro municipio
-5 Fazer o README.md
-6 O artefato final deverá ser empacotado em container com todos os componentes necessários, como bibliotecas, frameworks e outras dependências, para que fiquem isolados em seu próprio "container";
-7 Enviar o projeto zipado, adicione o arquivo README.md contendo seus dados bem como orientações de como executar e testar a solução apresentada;
-
-# Frontend
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[**Especificação - PT GEEPJ**](https://github.com/alansalvaterra/PT-GEEPJ-CM/blob/main/frontend/src/assets/especificacao.pdf)
 
 
-endpoint uf replicando endpoint unidade
+## Visualização da aplicação:
+
+<!-- gravar gif aplicacao no final -->
+<p align="center">
+  <img src="./src/assets/ptgeepj.gif" alt="Video da aplicação funcionando">
+</p>
+
+## Funcionalidades
+- A aplicação permite a visualização da localização das unidades CAIXA em mapa interativo na página inicial. Há opção para filtrar as unidades por região, por estado, por município, por SR ou todas as unidades.
+- O último filtro prevalece na renderização das unidades, permitindo apenas a aplicação de um filtro por vez.
+- Ao apontar o mouse em um marcador do mapa aparecerá o nome da unidade correspondente.
+- Ao clicar em algum marcador abre um pop-up no mapa com o nome da unidade, região, cidade/UF e SR de vinculação.
+
+## Backend
+Considerando que realizei o desenvolvimento desta avalição em meu computador pessoal e não tive acesso às rotas da API fornecida, eu salvei o retorno dos endpoints de unidades, regiões, UF, municípios e SR e desenvolvi uma API replicando estas informações para poder atender o requisito de consultar os dados em tempo real. A API foi desenvolvida em Node.js com Express.
+
+[**Documentação da API**](#)
+
+
+## Acesso ao projeto
+(...)
+
+### Acesso online
+(...)
+
+### Acesso em seu ambiente de desenvolvimento local
+Pré requisitos:
+(...)
+
