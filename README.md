@@ -1,3 +1,11 @@
+1 Utilizar um component PrimeNG (Botão)
+2 Ao apontar com mouse em um ponto no mapa, deverá aparecer no mínimo o nome da unidade.
+3 Ao clicar em um ponto deverá exibir um PopUp com os dados formatados do GIC.
+4 Refatorar filtro municipio
+5 Fazer o README.md
+6 O artefato final deverá ser empacotado em container com todos os componentes necessários, como bibliotecas, frameworks e outras dependências, para que fiquem isolados em seu próprio "container";
+7 Enviar o projeto zipado, adicione o arquivo README.md contendo seus dados bem como orientações de como executar e testar a solução apresentada;
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
