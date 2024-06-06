@@ -10,6 +10,7 @@ import { Unidade } from '../../models/unidade.model';
 })
 export class MapComponent implements OnInit, OnChanges {
   @Input() filterRegiao: string = '';
+  @Input() filterSr: number | undefined = undefined; // Modificado para aceitar undefined
   private map!: L.Map;
   private markersLayer: L.LayerGroup = L.layerGroup();
 
@@ -21,8 +22,8 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['filterRegiao'] && !changes['filterRegiao'].firstChange) {
-      console.log('Região filtrada mudou:', this.filterRegiao);
+    if ((changes['filterRegiao'] && !changes['filterRegiao'].firstChange) || (changes['filterSr'] && !changes['filterSr'].firstChange)) {
+      console.log('Filtros atualizados:', this.filterRegiao, this.filterSr);
       this.loadUnidades();
     }
   }
@@ -41,12 +42,15 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   private loadUnidades(): void {
-    this.unidadeService.getUnidades(this.filterRegiao).subscribe(
+    // Passar undefined se filterSr for null
+    const sr = this.filterSr === null ? undefined : this.filterSr;
+    this.unidadeService.getUnidades(this.filterRegiao, sr).subscribe(
       (unidades: Unidade[]) => {
         console.log('Unidades carregadas:', unidades);
         if (unidades && unidades.length > 0) {
           this.updateMapMarkers(unidades);
         } else {
+          this.clearMapMarkers();
           console.error('Dados inválidos para unidades:', unidades);
         }
       },

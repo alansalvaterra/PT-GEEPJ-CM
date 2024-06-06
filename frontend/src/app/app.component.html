@@ -39,14 +39,16 @@
 
         <div class="mb-6">
           <h3 class="text-lg font-semibold mb-2">SR</h3>
-          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+          <select (change)="onSrChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
             <option value="">Selecione a SR</option>
+            <option *ngFor="let sr of srs" [value]="sr.sr">{{ sr.nomeSr }}</option>
           </select>
         </div>
 
+
       </div>
       <div class="w-full lg:w-3/4">
-        <app-map [filterRegiao]="selectedRegiao"></app-map>
+        <app-map [filterRegiao]="selectedRegiao" [filterSr]="selectedSr"></app-map>
       </div>
     </div>
   </div>
