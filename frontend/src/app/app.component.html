@@ -32,8 +32,9 @@
 
         <div class="mb-6">
           <h3 class="text-lg font-semibold mb-2">Município</h3>
-          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+          <select id="municipio" (change)="onIbgeChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
             <option value="">Selecione o município</option>
+            <option *ngFor="let municipio of municipios" [value]="municipio.ibge">{{municipio.cidade}}</option>
           </select>
         </div>
 
@@ -48,7 +49,7 @@
 
       </div>
       <div class="w-full lg:w-3/4">
-        <app-map [filterRegiao]="selectedRegiao" [filterSr]="selectedSr"></app-map>
+        <app-map [filterRegiao]="selectedRegiao" [filterSr]="selectedSr" [filterIbge]="selectedIbge"></app-map>
       </div>
     </div>
   </div>
