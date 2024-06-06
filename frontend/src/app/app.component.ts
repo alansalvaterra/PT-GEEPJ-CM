@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegiaoService } from './services/regiao.service';
 import { SrService } from './services/sr.service';
+import { MunicipioService } from './services/municipio.service';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +11,23 @@ import { SrService } from './services/sr.service';
 export class AppComponent implements OnInit {
   regioes: any[] = [];
   srs: any[] = [];
+  municipios: any[] = [];
   selectedRegiao: string = '';
-  selectedSr: number | undefined = undefined; // Modificado para aceitar undefined
+  selectedSr: number | undefined = undefined;
+  selectedIbge: number | undefined = undefined; // Novo filtro de município
 
-  constructor(private regiaoService: RegiaoService, private srService: SrService) {}
+  constructor(private regiaoService: RegiaoService, private srService: SrService, private municipioService: MunicipioService) {}
 
   ngOnInit(): void {
     this.loadRegioes();
     this.loadSrs();
+    this.loadMunicipios(); // Carregar municípios
   }
 
   loadAllUnidades(): void {
     this.selectedRegiao = '';
-    this.selectedSr = undefined; // Modificado para aceitar undefined
+    this.selectedSr = undefined;
+    this.selectedIbge = undefined; // Resetar o filtro de município
   }
 
   loadRegioes(): void {
@@ -47,23 +52,44 @@ export class AppComponent implements OnInit {
     );
   }
 
+  loadMunicipios(): void {
+    this.municipioService.getMunicipios().subscribe(
+      (data) => {
+        this.municipios = data.rows;
+      },
+      (error) => {
+        console.error('Erro ao carregar municípios:', error);
+      }
+    );
+  }
+
   onRegiaoChange(event: any): void {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedRegiao = selectElement.value;
-    this.selectedSr = undefined;  // Resetar o filtro de SR quando a região for alterada
+    this.selectedSr = undefined;
+    this.selectedIbge = undefined;
     console.log('Nova região selecionada:', this.selectedRegiao);
   }
 
   onSrChange(event: any): void {
     const selectElement = event.target as HTMLSelectElement;
     const srString = selectElement.value;
-    const srMatch = srString.match(/\d+/); // Extrair o número da SR do nome
+    const srMatch = srString.match(/\d+/);
     if (srMatch) {
       this.selectedSr = Number(srMatch[0]);
     } else {
       this.selectedSr = undefined;
     }
-    this.selectedRegiao = '';  // Resetar o filtro de região quando a SR for alterada
+    this.selectedRegiao = '';
+    this.selectedIbge = undefined;
     console.log('Nova SR selecionada:', this.selectedSr);
+  }
+
+  onIbgeChange(event: any): void {
+    const selectElement = event.target as HTMLSelectElement;
+    this.selectedIbge = Number(selectElement.value);
+    this.selectedRegiao = '';
+    this.selectedSr = undefined;
+    console.log('Novo município selecionado:', this.selectedIbge);
   }
 }

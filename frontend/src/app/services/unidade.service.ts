@@ -13,10 +13,10 @@ export class UnidadeService {
 
   constructor(private http: HttpClient) { }
 
-  getUnidades(regiao?: string, sr?: number): Observable<Unidade[]> { // sr é number ou undefined
+  getUnidades(regiao?: string, sr?: number): Observable<Unidade[]> {
     let url = this.apiUrl;
 
-    if (sr !== undefined) { // Verificação modificada para sr !== undefined
+    if (sr !== undefined) {
       url = `${this.apiUrl}/sr/${encodeURIComponent(sr)}`;
     } else if (regiao) {
       url = `${this.apiUrl}/regiao/${encodeURIComponent(regiao)}`;
@@ -35,5 +35,11 @@ export class UnidadeService {
         }
       })
     );
+  }
+
+  getUnidadesByIbge(ibge: number): Observable<Unidade[]> {
+    const url = `${this.apiUrl}/ibge/${ibge}`;
+    console.log('URL da requisição:', url);
+    return this.http.get<Unidade[]>(url);
   }
 }

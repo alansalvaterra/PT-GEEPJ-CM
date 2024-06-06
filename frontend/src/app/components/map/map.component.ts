@@ -10,7 +10,8 @@ import { Unidade } from '../../models/unidade.model';
 })
 export class MapComponent implements OnInit, OnChanges {
   @Input() filterRegiao: string = '';
-  @Input() filterSr: number | undefined = undefined; // Modificado para aceitar undefined
+  @Input() filterSr: number | undefined = undefined;
+  @Input() filterIbge: number | undefined = undefined; // Novo filtro de município
   private map!: L.Map;
   private markersLayer: L.LayerGroup = L.layerGroup();
 
@@ -22,8 +23,10 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ((changes['filterRegiao'] && !changes['filterRegiao'].firstChange) || (changes['filterSr'] && !changes['filterSr'].firstChange)) {
-      console.log('Filtros atualizados:', this.filterRegiao, this.filterSr);
+    if ((changes['filterRegiao'] && !changes['filterRegiao'].firstChange) || 
+        (changes['filterSr'] && !changes['filterSr'].firstChange) ||
+        (changes['filterIbge'] && !changes['filterIbge'].firstChange)) {
+      console.log('Filtros atualizados:', this.filterRegiao, this.filterSr, this.filterIbge);
       this.loadUnidades();
     }
   }
@@ -42,22 +45,29 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   private loadUnidades(): void {
-    // Passar undefined se filterSr for null
     const sr = this.filterSr === null ? undefined : this.filterSr;
-    this.unidadeService.getUnidades(this.filterRegiao, sr).subscribe(
-      (unidades: Unidade[]) => {
-        console.log('Unidades carregadas:', unidades);
-        if (unidades && unidades.length > 0) {
+    const ibge = this.filterIbge === null ? undefined : this.filterIbge;
+    if (ibge !== undefined) {
+      this.unidadeService.getUnidadesByIbge(ibge).subscribe(
+        (unidades: Unidade[]) => {
+          console.log('Unidades carregadas por IBGE:', unidades);
           this.updateMapMarkers(unidades);
-        } else {
-          this.clearMapMarkers();
-          console.error('Dados inválidos para unidades:', unidades);
+        },
+        (error) => {
+          console.error('Erro ao carregar unidades por IBGE:', error);
         }
-      },
-      (error) => {
-        console.error('Erro ao carregar unidades:', error);
-      }
-    );
+      );
+    } else {
+      this.unidadeService.getUnidades(this.filterRegiao, sr).subscribe(
+        (unidades: Unidade[]) => {
+          console.log('Unidades carregadas:', unidades);
+          this.updateMapMarkers(unidades);
+        },
+        (error) => {
+          console.error('Erro ao carregar unidades:', error);
+        }
+      );
+    }
   }
 
   private updateMapMarkers(unidades: Unidade[]): void {
