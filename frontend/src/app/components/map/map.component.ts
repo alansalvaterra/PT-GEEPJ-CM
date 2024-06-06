@@ -10,8 +10,9 @@ import { Unidade } from '../../models/unidade.model';
 })
 export class MapComponent implements OnInit, OnChanges {
   @Input() filterRegiao: string = '';
+  @Input() filterUf: string = '';
   @Input() filterSr: number | undefined = undefined;
-  @Input() filterIbge: number | undefined = undefined; // Novo filtro de município
+  @Input() filterIbge: number | undefined = undefined;
   private map!: L.Map;
   private markersLayer: L.LayerGroup = L.layerGroup();
 
@@ -23,10 +24,13 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ((changes['filterRegiao'] && !changes['filterRegiao'].firstChange) || 
-        (changes['filterSr'] && !changes['filterSr'].firstChange) ||
-        (changes['filterIbge'] && !changes['filterIbge'].firstChange)) {
-      console.log('Filtros atualizados:', this.filterRegiao, this.filterSr, this.filterIbge);
+    if (
+      (changes['filterRegiao'] && !changes['filterRegiao'].firstChange) ||
+      (changes['filterUf'] && !changes['filterUf'].firstChange) ||
+      (changes['filterSr'] && !changes['filterSr'].firstChange) ||
+      (changes['filterIbge'] && !changes['filterIbge'].firstChange)
+    ) {
+      console.log('Filtros atualizados:', this.filterRegiao, this.filterSr, this.filterIbge, this.filterUf);
       this.loadUnidades();
     }
   }
@@ -58,7 +62,7 @@ export class MapComponent implements OnInit, OnChanges {
         }
       );
     } else {
-      this.unidadeService.getUnidades(this.filterRegiao, sr).subscribe(
+      this.unidadeService.getUnidades(this.filterRegiao, sr, this.filterUf).subscribe(
         (unidades: Unidade[]) => {
           console.log('Unidades carregadas:', unidades);
           this.updateMapMarkers(unidades);

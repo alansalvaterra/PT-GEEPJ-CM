@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegiaoService } from './services/regiao.service';
 import { SrService } from './services/sr.service';
 import { MunicipioService } from './services/municipio.service';
+import { UfService } from './services/uf.service';
 
 @Component({
   selector: 'app-root',
@@ -10,24 +11,33 @@ import { MunicipioService } from './services/municipio.service';
 })
 export class AppComponent implements OnInit {
   regioes: any[] = [];
+  ufs: any[] = [];
   srs: any[] = [];
   municipios: any[] = [];
   selectedRegiao: string = '';
+  selectedUf: string = '';
   selectedSr: number | undefined = undefined;
-  selectedIbge: number | undefined = undefined; // Novo filtro de município
+  selectedIbge: number | undefined = undefined; 
 
-  constructor(private regiaoService: RegiaoService, private srService: SrService, private municipioService: MunicipioService) {}
+  constructor(
+    private regiaoService: RegiaoService, 
+    private srService: SrService, 
+    private municipioService: MunicipioService, 
+    private ufService: UfService
+  ) {}
 
   ngOnInit(): void {
     this.loadRegioes();
     this.loadSrs();
-    this.loadMunicipios(); // Carregar municípios
+    this.loadMunicipios();
+    this.loadUf(); 
   }
 
   loadAllUnidades(): void {
     this.selectedRegiao = '';
+    this.selectedUf = '';
     this.selectedSr = undefined;
-    this.selectedIbge = undefined; // Resetar o filtro de município
+    this.selectedIbge = undefined; 
   }
 
   loadRegioes(): void {
@@ -37,6 +47,17 @@ export class AppComponent implements OnInit {
       },
       (error) => {
         console.error('Erro ao carregar regiões:', error);
+      }
+    );
+  }
+
+  loadUf(): void {
+    this.ufService.getUfs().subscribe(
+      (data) => {
+        this.ufs = data;
+      },
+      (error) => {
+        console.error('Erro ao carregar UF:', error);
       }
     );
   }
@@ -66,21 +87,26 @@ export class AppComponent implements OnInit {
   onRegiaoChange(event: any): void {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedRegiao = selectElement.value;
+    this.selectedUf = '';
     this.selectedSr = undefined;
     this.selectedIbge = undefined;
     console.log('Nova região selecionada:', this.selectedRegiao);
   }
 
+  onUfChange(event: any): void {
+    const selectElement = event.target as HTMLSelectElement;
+    this.selectedUf = selectElement.value;
+    this.selectedRegiao = '';
+    this.selectedSr = undefined;
+    this.selectedIbge = undefined;
+    console.log('Nova UF selecionada:', this.selectedRegiao);
+  }
+
   onSrChange(event: any): void {
     const selectElement = event.target as HTMLSelectElement;
-    const srString = selectElement.value;
-    const srMatch = srString.match(/\d+/);
-    if (srMatch) {
-      this.selectedSr = Number(srMatch[0]);
-    } else {
-      this.selectedSr = undefined;
-    }
+    this.selectedSr = Number(selectElement.value);
     this.selectedRegiao = '';
+    this.selectedUf = '';
     this.selectedIbge = undefined;
     console.log('Nova SR selecionada:', this.selectedSr);
   }
@@ -89,6 +115,7 @@ export class AppComponent implements OnInit {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedIbge = Number(selectElement.value);
     this.selectedRegiao = '';
+    this.selectedUf = '';
     this.selectedSr = undefined;
     console.log('Novo município selecionado:', this.selectedIbge);
   }

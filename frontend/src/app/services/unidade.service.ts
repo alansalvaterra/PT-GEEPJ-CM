@@ -13,13 +13,15 @@ export class UnidadeService {
 
   constructor(private http: HttpClient) { }
 
-  getUnidades(regiao?: string, sr?: number): Observable<Unidade[]> {
+  getUnidades(regiao?: string, sr?: number, uf?: string): Observable<Unidade[]> {
     let url = this.apiUrl;
 
     if (sr !== undefined) {
       url = `${this.apiUrl}/sr/${encodeURIComponent(sr)}`;
     } else if (regiao) {
       url = `${this.apiUrl}/regiao/${encodeURIComponent(regiao)}`;
+    } else if (uf) {
+      url = `${this.apiUrl}/uf/${encodeURIComponent(uf)}`;
     }
 
     console.log('URL da requisição:', url);
