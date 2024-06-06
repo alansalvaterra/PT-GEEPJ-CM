@@ -32,7 +32,6 @@ export class UnidadeService {
         } else if (Array.isArray(response)) {
           return response;
         } else {
-          console.error('Formato de resposta da API inesperado:', response);
           return [];
         }
       })
@@ -41,7 +40,6 @@ export class UnidadeService {
 
   getUnidadesByIbge(ibge: number): Observable<Unidade[]> {
     const url = `${this.apiUrl}/ibge/${ibge}`;
-    console.log('URL da requisição:', url);
     return this.http.get<Unidade[]>(url);
   }
 }

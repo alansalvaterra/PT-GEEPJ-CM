@@ -30,15 +30,14 @@ export class MapComponent implements OnInit, OnChanges {
       (changes['filterSr'] && !changes['filterSr'].firstChange) ||
       (changes['filterIbge'] && !changes['filterIbge'].firstChange)
     ) {
-      console.log('Filtros atualizados:', this.filterRegiao, this.filterSr, this.filterIbge, this.filterUf);
       this.loadUnidades();
     }
   }
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [-15.798461033187, -47.8816857515524],
-      zoom: 5
+      center: [-13.0, -50.0],
+      zoom: 4
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -54,21 +53,13 @@ export class MapComponent implements OnInit, OnChanges {
     if (ibge !== undefined) {
       this.unidadeService.getUnidadesByIbge(ibge).subscribe(
         (unidades: Unidade[]) => {
-          console.log('Unidades carregadas por IBGE:', unidades);
           this.updateMapMarkers(unidades);
-        },
-        (error) => {
-          console.error('Erro ao carregar unidades por IBGE:', error);
         }
       );
     } else {
       this.unidadeService.getUnidades(this.filterRegiao, sr, this.filterUf).subscribe(
         (unidades: Unidade[]) => {
-          console.log('Unidades carregadas:', unidades);
           this.updateMapMarkers(unidades);
-        },
-        (error) => {
-          console.error('Erro ao carregar unidades:', error);
         }
       );
     }
@@ -82,8 +73,6 @@ export class MapComponent implements OnInit, OnChanges {
         const marker = L.marker([unidade.latitude, unidade.longitude])
           .bindPopup(`<b>${unidade.nomeUnidade}</b><br>${unidade.cidade}, ${unidade.uf}`);
         this.markersLayer.addLayer(marker);
-      } else {
-        console.error('Unidade inválida:', unidade);
       }
     });
   }
