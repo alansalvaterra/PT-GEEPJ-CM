@@ -10,13 +10,17 @@ import { MapComponent } from './components/map/map.component';
 
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
+import { HomeComponent } from './components/home/home.component';
+import { EspecificacaoComponent } from './components/especificacao/especificacao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MapComponent
+    MapComponent,
+    HomeComponent,
+    EspecificacaoComponent
   ],
   imports: [
     BrowserModule,
