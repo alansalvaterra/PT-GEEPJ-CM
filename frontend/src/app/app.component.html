@@ -4,44 +4,44 @@
 
   <div class="w-full">
     <div class="pb-5 text-center">
-      <h2 class="text-3xl font-semibold mb-2">Localizador de Unidades</h2>
-      <p class="text-2xl">Encontre abaixo a localização das unidades da Caixa Econômica Federal</p>
+      <h2 class="text-4xl font-semibold mb-2">Localizador de Unidades</h2>
+      <p class="text-3xl">Encontre abaixo a localização das unidades da Caixa Econômica Federal</p>
     </div>
 
     <div class="flex flex-col lg:flex-row">
       <div class="w-full lg:w-1/4 pr-6">
-        <div class="mb-6">
-          <h3 class="text-lg font-semibold mb-2">Todas as unidades</h3>
-          <button (click)="loadAllUnidades()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow">Todas as unidades</button>
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold mb-2">Território nacional</h3>
+          <button (click)="loadAllUnidades()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow text-xl font-bold w-full">Todas as unidades</button>
         </div>
 
-        <div class="mb-6">
-          <h3 class="text-lg font-semibold mb-2">Região</h3>
-          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold mb-2">Região</h3>
+          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-xl">
             <option value="">Selecione a região</option>
             <option *ngFor="let regiao of regioes" [value]="regiao.regiao">{{ regiao.regiao }}</option>
           </select>
         </div>
 
-        <div class="mb-6">
-          <h3 class="text-lg font-semibold mb-2">Estado</h3>
-          <select (change)="onUfChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold mb-2">Estado</h3>
+          <select (change)="onUfChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-xl">
             <option value="">Selecione a UF</option>
             <option *ngFor="let uf of ufs" [value]="uf.uf">{{ uf.uf }}</option>
           </select>
         </div>
 
-        <div class="mb-6">
-          <h3 class="text-lg font-semibold mb-2">Município</h3>
-          <select id="municipio" (change)="onIbgeChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold mb-2">Município</h3>
+          <select id="municipio" (change)="onIbgeChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-xl">
             <option value="">Selecione o município</option>
             <option *ngFor="let municipio of municipios" [value]="municipio.ibge">{{municipio.cidade}}</option>
           </select>
         </div>
 
-        <div class="mb-6">
-          <h3 class="text-lg font-semibold mb-2">SR</h3>
-          <select (change)="onSrChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold mb-2">SR</h3>
+          <select (change)="onSrChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-xl">
             <option value="">Selecione a SR</option>
             <option *ngFor="let sr of srs" [value]="sr.sr">{{ sr.nomeSr }}</option>
           </select>
