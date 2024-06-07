@@ -1,6 +1,6 @@
 # Produção Temática - GEEPJ - Consultor Matriz
 ## Decrição
-O projeto é uma SPA com Angular, TypeScript, PrimeNG e Leaflet que deverá consumir uma API, que contém dados de unidades de atendimento CAIXA, e mostrar as unidades em um mapa interativo.Para mais informações, a especificação completa pode ser acessada através do link abaixo:
+O projeto é uma SPA com Angular, TypeScript, PrimeNG e Leaflet que consome uma API, que contém dados sobre a localização de unidades de atendimento CAIXA, e mostra as unidades em um mapa interativo. Para mais informações, a especificação completa pode ser acessada através do link abaixo:
 
 [**Especificação - PT GEEPJ**](https://github.com/alansalvaterra/PT-GEEPJ-CM/blob/main/frontend/src/assets/especificacao.pdf)
 
@@ -34,3 +34,5 @@ Considerando que realizei o desenvolvimento desta avaliação em meu computador 
 Pré requisitos:
 (...)
 
+
+## OBS: Este repositório ficará disponível apenas até o resultado da seleção.

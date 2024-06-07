@@ -1,5 +1,7 @@
-<main class="w-4/5 mx-auto bg-white rounded-xl shadow-lg my-6 p-6 flex flex-wrap items-start">
+<main class="w-4/5 mx-auto bg-white rounded-xl shadow-lg my-6 p-6 flex flex-wrap items-start">  
+  
   <div class="w-full">
+
     <div class="pb-5 text-center">
       <h2 class="text-4xl font-semibold mb-2">Localizador de Unidades</h2>
       <p class="text-3xl">Encontre abaixo a localização das unidades da Caixa Econômica Federal</p>
@@ -7,7 +9,7 @@
 
     <div class="flex flex-col lg:flex-row">
       <div class="w-full lg:w-1/4 pr-6">
-        
+
         <div class="mb-12">
           <h3 class="text-xl font-semibold mb-2">Território nacional</h3>
           <button pButton type="button" label="Todas as unidades" (click)="loadAllUnidades()"
@@ -52,7 +54,7 @@
         <app-map [filterRegiao]="selectedRegiao" [filterUf]="selectedUf" [filterSr]="selectedSr"
           [filterIbge]="selectedIbge"></app-map>
       </div>
-      
+
     </div>
   </div>
 </main>

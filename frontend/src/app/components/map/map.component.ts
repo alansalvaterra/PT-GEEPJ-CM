@@ -71,17 +71,7 @@ export class MapComponent implements OnInit, OnChanges {
     unidades.forEach((unidade: Unidade) => {
       if (unidade.latitude && unidade.longitude && unidade.nomeUnidade && unidade.cidade && unidade.uf) {
         const marker = L.marker([unidade.latitude, unidade.longitude])
-          .bindPopup(
-            `<b>Unidade: ${unidade.nomeUnidade}</b>
-            <br>Região: ${unidade.regiao}
-            <br>Cidade: ${unidade.cidade}/${unidade.uf}
-            <br>SR de vinculação: ${unidade.nomeSr}`
-          )
-          
-          .bindTooltip(unidade.nomeUnidade, {
-            permanent: false,
-            direction: 'top'
-          });
+          .bindPopup(`<b>${unidade.nomeUnidade}</b><br>${unidade.cidade}, ${unidade.uf}`);
         this.markersLayer.addLayer(marker);
       }
     });
