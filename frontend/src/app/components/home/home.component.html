@@ -1,49 +1,40 @@
-<main class="w-4/5 mx-auto bg-white rounded-xl shadow-lg my-6 p-6 flex flex-wrap items-start">  
-  
+<main class="w-full lg:w-4/5 mx-auto bg-white rounded-xl shadow-lg my-6 p-4 lg:p-6 flex flex-wrap items-start">  
   <div class="w-full">
-
     <div class="pb-5 text-center">
-      <h2 class="text-4xl font-semibold mb-2">Localizador de Unidades</h2>
-      <p class="text-3xl">Encontre abaixo a localização das unidades da Caixa Econômica Federal</p>
+      <h2 class="text-2xl lg:text-4xl font-semibold mb-2">Localizador de Unidades</h2>
+      <p class="text-lg lg:text-3xl">Encontre abaixo a localização das unidades da Caixa Econômica Federal</p>
     </div>
 
     <div class="flex flex-col lg:flex-row">
-      <div class="w-full lg:w-1/4 pr-6">
-
+      <div class="w-full lg:w-1/4 pr-0 lg:pr-6">
         <div class="mb-12">
-          <h3 class="text-xl font-semibold mb-2">Território nacional</h3>
-          <button pButton type="button" label="Todas as unidades" (click)="loadAllUnidades()"
-            class="w-full text-xl font-bold py-2 px-4 rounded-lg"></button>
+          <h3 class="text-lg lg:text-xl font-semibold mb-2">Território nacional</h3>
+          <button pButton type="button" label="Todas as unidades" (click)="loadAllUnidades()" class="w-full text-lg lg:text-xl font-bold py-2 px-4 rounded-lg"></button>
         </div>
-
         <div class="mb-12">
-          <h3 class="text-xl font-semibold mb-2">Região</h3>
-          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-xl">
+          <h3 class="text-lg lg:text-xl font-semibold mb-2">Região</h3>
+          <select (change)="onRegiaoChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-lg lg:text-xl">
             <option value="">Selecione a região</option>
             <option *ngFor="let regiao of regioes" [value]="regiao.regiao">{{ regiao.regiao }}</option>
           </select>
         </div>
-
         <div class="mb-12">
-          <h3 class="text-xl font-semibold mb-2">Estado</h3>
-          <select (change)="onUfChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-xl">
+          <h3 class="text-lg lg:text-xl font-semibold mb-2">Estado</h3>
+          <select (change)="onUfChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-lg lg:text-xl">
             <option value="">Selecione a UF</option>
             <option *ngFor="let uf of ufs" [value]="uf.uf">{{ uf.uf }}</option>
           </select>
         </div>
-
         <div class="mb-12">
-          <h3 class="text-xl font-semibold mb-2">Município</h3>
-          <select id="municipio" (change)="onIbgeChange($event)"
-            class="border border-gray-300 rounded-lg py-2 px-4 w-full text-xl">
+          <h3 class="text-lg lg:text-xl font-semibold mb-2">Município</h3>
+          <select id="municipio" (change)="onIbgeChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-lg lg:text-xl">
             <option value="">Selecione o município</option>
             <option *ngFor="let municipio of municipios" [value]="municipio.ibge">{{municipio.cidade}}</option>
           </select>
         </div>
-
         <div class="mb-12">
-          <h3 class="text-xl font-semibold mb-2">SR</h3>
-          <select (change)="onSrChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-xl">
+          <h3 class="text-lg lg:text-xl font-semibold mb-2">SR</h3>
+          <select (change)="onSrChange($event)" class="border border-gray-300 rounded-lg py-2 px-4 w-full text-lg lg:text-xl">
             <option value="">Selecione a SR</option>
             <option *ngFor="let sr of srs" [value]="sr.sr">{{ sr.nomeSr }}</option>
           </select>
@@ -51,10 +42,8 @@
       </div>
 
       <div class="w-full">
-        <app-map [filterRegiao]="selectedRegiao" [filterUf]="selectedUf" [filterSr]="selectedSr"
-          [filterIbge]="selectedIbge"></app-map>
+        <app-map [filterRegiao]="selectedRegiao" [filterUf]="selectedUf" [filterSr]="selectedSr" [filterIbge]="selectedIbge"></app-map>
       </div>
-
     </div>
   </div>
 </main>

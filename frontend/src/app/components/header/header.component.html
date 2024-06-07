@@ -1,28 +1,25 @@
-<header class="bg-blue-800 py-8 flex items-center justify-between text-3xl">
-
-  <div class="ml-4 flex items-center">
-    <img src="assets/logo2-cef.png" alt="Logotipo Caixa Econômica Federal" class="h-6">
+<header class="bg-blue-800 py-4 flex flex-col lg:flex-row items-center justify-between text-xl lg:text-3xl">
+  <div class="ml-4 flex items-center mb-4 lg:mb-0">
+    <img src="assets/logo2-cef.png" alt="Logotipo Caixa Econômica Federal" class="h-6 lg:h-8">
     <span class="text-white ml-2"><strong>GEEPJ</strong> Produção Temática - Consultor Matriz </span>
   </div>
 
-  <nav class="mr-4 flex items-center">
-    <div class="card flex justify-content-center gap-3">
+  <nav class="mr-4 flex flex-col lg:flex-row items-center">
+    <div class="card flex flex-col lg:flex-row justify-content-center gap-3">
       <a routerLink="/home"
-        class="text-white ml-2 bg-blue-800 hover:bg-slate-400 border-white rounded-lg px-3 py-2">Home</a>
-
-      <a routerLink="/especificacao"
-        class="text-white ml-2 bg-blue-800 hover:bg-slate-400 border-white rounded-lg px-3 py-2">Especificação</a>
-
-      <a href="https://documenter.getpostman.com/view/33995178/2sA3XJk4w9#94f9d4aa-dd3f-4700-a306-f91dcda0fc76"
-        class="text-white ml-2 bg-blue-800 hover:bg-slate-400 border-white rounded-lg px-3 py-2"
+        class="text-white bg-blue-800 hover:bg-slate-400 border-white rounded-lg px-3 py-2 mb-2 lg:mb-0 lg:ml-2">Home</a>
+      
+        <a routerLink="/especificacao"
+        class="text-white bg-blue-800 hover:bg-slate-400 border-white rounded-lg px-3 py-2 mb-2 lg:mb-0 lg:ml-2">Especificação</a>
+      
+        <a href="https://documenter.getpostman.com/view/33995178/2sA3XJk4w9#94f9d4aa-dd3f-4700-a306-f91dcda0fc76"
+        class="text-white bg-blue-800 hover:bg-slate-400 border-white rounded-lg px-3 py-2 mb-2 lg:mb-0 lg:ml-2"
         target="_blank">API</a>
-
-      <a href="https://github.com/alansalvaterra/PT-GEEPJ-CM" target="_blank" rel="noopener noreferrer"
-        class="text-blue-800 bg-slate-400 hover:bg-slate-50 border-white rounded-lg px-3 py-2 ml-3 flex items-center">
-        <i class="fab fa-github mr-2"></i>
-        GitHub
+      
+        <a href="https://github.com/alansalvaterra/PT-GEEPJ-CM" target="_blank" rel="noopener noreferrer"
+        class="text-blue-800 bg-slate-400 hover:bg-slate-50 border-white rounded-lg px-3 py-2 mb-2 lg:mb-0 lg:ml-3 flex items-center">
+        <i class="fab fa-github mr-2"></i> GitHub
       </a>
     </div>
   </nav>
-
 </header>
