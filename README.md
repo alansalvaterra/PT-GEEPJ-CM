@@ -7,9 +7,8 @@ O projeto é uma SPA com Angular, TypeScript, PrimeNG e Leaflet que consome uma 
 
 ## Visualização da aplicação:
 
-<!-- gravar gif aplicacao no final -->
 <p align="center">
-  <img src="./src/assets/ptgeepj.gif" alt="Video da aplicação funcionando">
+  <img src="/frontend/src/assets/animacaopagina.gif" alt="Video da aplicação funcionando">
 </p>
 
 ## Funcionalidades
