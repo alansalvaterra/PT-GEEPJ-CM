@@ -35,7 +35,7 @@ Considerando que realizei o desenvolvimento desta avaliação em meu computador 
 
     ```sh
     > git clone https://github.com/alansalvaterra/PT-GEEPJ-CM.git
-    > cd SEU-DIRETORIO
+    > cd PT-GEEPJ-CM
    ```
 
 2. **Construa e inicie o container Docker:**
