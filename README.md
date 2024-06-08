@@ -48,7 +48,7 @@ Considerando que realizei o desenvolvimento desta avaliação em meu computador 
 
     ```sh
     Frontend: http://localhost:4200
-    Backend: http://localhost:3000
+    Backend: http://localhost:3000 (endpoints na documentação)
     ```
 
 4. Observação: Certifique-se de que as portas 3000 e 4200 estão disponíveis no seu ambiente.
