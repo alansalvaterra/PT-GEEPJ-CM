@@ -35,6 +35,8 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   private initMap(): void {
+    L.Icon.Default.imagePath = 'assets/leaflet/';
+
     this.map = L.map('map', {
       center: [-13.0, -50.0],
       zoom: 4
