@@ -52,5 +52,4 @@ Considerando que realizei o desenvolvimento desta avaliação em meu computador 
     ```
 
 4. Observação: Certifique-se de que as portas 3000 e 4200 estão disponíveis no seu ambiente.
-Acesse a aplicação:
 
