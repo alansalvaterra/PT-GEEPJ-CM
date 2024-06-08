@@ -1,6 +1,6 @@
 # Produção Temática - GEEPJ - Consultor Matriz
 ## Decrição
-O projeto é uma SPA com Angular, TypeScript, PrimeNG e Leaflet que consome uma API, que contém dados sobre a localização de unidades de atendimento CAIXA, e mostra as unidades em um mapa interativo. Para mais informações, a especificação completa pode ser acessada através do link abaixo:
+O projeto é uma SPA com Angular, TypeScript, PrimeNG e Leaflet que consome uma API com dados sobre a localização de unidades de atendimento CAIXA e mostra as unidades em um mapa interativo. Para maiores informações, a especificação completa pode ser acessada através do link abaixo:
 
 [**Especificação - PT GEEPJ**](https://github.com/alansalvaterra/PT-GEEPJ-CM/blob/main/frontend/src/assets/especificacao.pdf)
 
@@ -18,20 +18,39 @@ O projeto é uma SPA com Angular, TypeScript, PrimeNG e Leaflet que consome uma 
 - Ao clicar em algum marcador abre um pop-up no mapa com o nome da unidade, região, cidade/UF e SR de vinculação.
 
 ## Backend
-Considerando que realizei o desenvolvimento desta avaliação em meu computador pessoal e não tive acesso às rotas da API fornecida, eu salvei o retorno do .json dos endpoints de unidades, regiões, UF (UF no endpoint fornecido estava apontando para todas as unidades), municípios e SR e desenvolvi uma API replicando estas informações para poder atender o requisito de consultar os dados em tempo real. A API foi desenvolvida em Node.js com Express.
+Considerando que realizei o desenvolvimento desta avaliação em meu computador pessoal e não tive acesso às rotas da API fornecida, eu salvei o retorno do .json dos endpoints de unidades, regiões, municípios, SR e UF (o endpoint para UF fornecido estava apontando para todas as unidades, portanto, desenvolvi por conta própria), e desenvolvi uma API replicando estas informações para poder atender o requisito de consultar os dados em tempo real. A API foi desenvolvida em Node.js com Express.
 
 [**Documentação da API**](https://documenter.getpostman.com/view/33995178/2sA3XJk4w9#94f9d4aa-dd3f-4700-a306-f91dcda0fc76)
 
 
-## Acesso ao projeto
-(...)
+## Instruções para rodar o projeto
+### Pré-requisitos
 
-### Acesso online
-(...)
+- [Git](http://git-scm.com)
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Acesso em seu ambiente de desenvolvimento local
-Pré requisitos:
-(...)
+### Passos para Rodar o Projeto
+1. **Clone o repositório para o seu ambiente local:**
 
+    ```sh
+    > git clone https://github.com/alansalvaterra/PT-GEEPJ-CM.git
+    > cd SEU-DIRETORIO
+   ```
 
-## OBS: Este repositório ficará disponível apenas até o resultado da seleção.
+2. **Construa e inicie o container Docker:**
+
+    ```sh
+    > docker-compose up --build
+    ```
+
+3. **Acesse a aplicação:**
+
+    ```sh
+    Frontend: http://localhost:4200
+    Backend: http://localhost:3000
+    ```
+
+4. Observação: Certifique-se de que as portas 3000 e 4200 estão disponíveis no seu ambiente.
+Acesse a aplicação:
+
